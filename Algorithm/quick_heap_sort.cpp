@@ -13,8 +13,9 @@ int main()
 
 	vector<int> v ={8,-4,-45,-1,-1,-1,-1,12,-12,-12,-12,-12,12,12};
 
+	qsort(v, 0, v.size()-1);
 	//qsort_3way(v, 0, v.size()-1);
-	heap_sort(v);
+	//heap_sort(v);
 
 	for(auto x:v)
 		cout<<x<<" ";
@@ -35,13 +36,13 @@ void qsort(vector<int> &arry, int lo, int hi)
 int partition(vector<int> &arry, int lo, int hi)
 {
 	int i=lo, j=hi+1;
-	int base = arry[lo];
+	int pivot = arry[lo];
 
 	while(true)
 	{
-		while( j>lo && base < arry[--j] ); //从后面找比base小的元素
+		while( j>lo && arry[--j]>pivot ); //从后面找比pivot小的元素
 	
-		while( i<hi && base > arry[++i] ); //从前面找比base大的元素
+		while( i<hi && arry[++i]<pivot ); //从前面找比pivot大的元素
 
 		if(i >= j)	break; //注意是等于号
 
