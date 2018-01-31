@@ -4,26 +4,29 @@ using namespace std;
 class singleton{
 private:
 	singleton(){
-
+		cout<<"construct singleton!"<<endl;
 	}
 
-	static const singleton *pInstance;
+	~singleton(){
+		cout<<"destory singleton!"<<endl;
+	}
+
+	static singleton * pInstance;
 
 public:
-	static const singleton *getInstance()
+	static singleton *getInstance()
 	{
 		return pInstance;
 	}
 
 };
 
-const singleton * singleton:: pInstance = new singleton();
+singleton *singleton::pInstance = new singleton();
 
 int main()
 {
-	singleton *a;
-	a->getInstance();
-	singleton *b;
-	b ->getInstance();
+	singleton *a = singleton::getInstance();
+	singleton *b = singleton::getInstance();
+
 	return 0;
 }
