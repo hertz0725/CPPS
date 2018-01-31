@@ -5,7 +5,7 @@ using namespace std;
 int partition(vector<int> &arry, int lo, int hi);
 void qsort(vector<int> &arry, int lo, int hi);
 void qsort_3way(vector<int> &arry, int lo, int hi);
-void sink(vector<int> &arry, int k);
+void sink(vector<int> &arry, int k, int N);
 void heap_sort(vector<int> &arry);
 
 int main()
@@ -74,28 +74,10 @@ void qsort_3way(vector<int> &arry, int lo, int hi)
 	qsort_3way(arry,gt+1,hi);
 }
 
-
-void sink(vector<int> &arry, int k, int N)
-{
-	int j =0;
-	while( (j = 2*k+1) <= N)
-	{
-		if(j<N && arry[j]<arry[j+1])	j++;
-		
-		if(arry[k]>=arry[j])	break;
-
-		swap(arry[k], arry[j]);
-
-		k = j;
-	}
-
-}
-
 void heap_sort(vector<int> &arry)
 {
-	int N = arry.size()-1;
+	int N = arry.size()-1; //N为最后一个下标 [0..N]上操作
 
-	cout<<N<<endl;
 	for(int k = N/2; k >=0; k--)
 		sink(arry,k,N);
 
@@ -107,11 +89,18 @@ void heap_sort(vector<int> &arry)
 
 }
 
+void sink(vector<int> &arry, int k, int N)
+{
+	while( 2*k+1 <= N)  // 数组为[0..N]
+	{
+		int j = 2*k+1;
+		if(j<N && arry[j]<arry[j+1])  j++;
+		
+		if(arry[k]>=arry[j])  break;
 
+		swap(arry[k], arry[j]);
 
+		k = j; //继续下沉
+	}
 
-
-
-
-
-
+}
