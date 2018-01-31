@@ -71,8 +71,8 @@ void qsort_3way(vector<int> &arry, int lo, int hi)
 			i++;
 	}
 
-	qsort_3way(arry,lo,lt-1);
-	qsort_3way(arry,gt+1,hi);
+	qsort_3way(arry,lo,lt-1); //[lo..lt-1] < pivot
+	qsort_3way(arry,gt+1,hi); //[gt+1..hi] > pivot, [lt..gt]==pivot
 }
 
 void heap_sort(vector<int> &arry)
