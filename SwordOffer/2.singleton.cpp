@@ -21,7 +21,7 @@ public:
 
 };
 
-singleton *singleton::pInstance = new singleton();
+singleton *singleton::pInstance = new singleton();  //静态要在类外初始化
 
 int main()
 {
