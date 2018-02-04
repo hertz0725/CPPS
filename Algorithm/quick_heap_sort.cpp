@@ -44,7 +44,7 @@ int partition(vector<int> &arry, int lo, int hi)
 	
 		while( i<hi && arry[++i]<pivot ); //从前面找比pivot大的元素
 
-		if(i >= j)	break; //注意是等于号
+		if(i >= j)	break; //注意是等于号，break
 
 		swap(arry[i], arry[j]);
 	}
