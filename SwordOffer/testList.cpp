@@ -6,6 +6,7 @@ int main()
 {
 	list<int> l1;
 	list<int> l2;
+	list<int> l3;
 
 	for(int i = 0; i<5; i++)
 		l1.push_back(i);
@@ -23,7 +24,7 @@ int main()
 		cout<<*it<<" ";
 	cout<<endl;
 
-	l1.splice(l1.begin(),l1,it_t);
+	l1.splice(l2.begin(),l3,it_t);
 
 	cout<<*it_t<<endl;
 
@@ -34,7 +35,7 @@ int main()
 	for(auto it = l2.begin(); it!=l2.end(); it++)
 	cout<<*it<<" ";
 	cout<<endl;
-    //test
+    //test //
 
 	return 0;
 }
