@@ -49,5 +49,10 @@ int main()
 	replaceSpace(str1, strlen(str1));
 
 	cout<<str1<<endl;
+
+
+	int m = 10, n =100;
+
+	int dp[m][n] = {0};
 	return 0;
 }
