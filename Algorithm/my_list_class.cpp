@@ -71,11 +71,7 @@ int main()
 		cout<<endl;
 	}
 
-	string s = "123456";
-
-	string &&s1 = move(s);
-
-	cout << s1<<endl;
+	
 
 	return 0;
 }

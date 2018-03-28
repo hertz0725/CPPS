@@ -7,13 +7,16 @@ void qsort(vector<int> &arry, int lo, int hi);
 void qsort_3way(vector<int> &arry, int lo, int hi);
 void sink(vector<int> &arry, int k, int N);
 void heap_sort(vector<int> &arry);
+void merge_sort(vector<int> &array, int lo, int hi);
+void merge(vector<int> &array, int lo, int mid, int hi);
 
 int main()
 {
 
 	vector<int> v ={8,-4,-45,-1,-1,-1,-1,12,-12,-12,-12,-12,12,12};
 
-	qsort(v, 0, v.size()-1);
+	merge_sort(v,0,v.size()-1);
+	//qsort(v, 0, v.size()-1);
 	//qsort_3way(v, 0, v.size()-1);
 	//heap_sort(v);
 
@@ -104,4 +107,29 @@ void sink(vector<int> &arry, int k, int N)
 		k = j; //继续下沉
 	}
 
+}
+
+void merge_sort(vector<int> &array, int lo, int hi)
+{
+	if(lo >= hi)	return;
+
+	int mid = lo + (hi-lo)/2;
+
+	merge_sort(array, lo, mid);
+	merge_sort(array, mid+1, hi);
+	merge(array, lo, mid, hi);
+}
+
+
+void merge(vector<int> &array, int lo, int mid, int hi)
+{
+	vector<int> aux(array);
+	int i = lo, j = mid+1;
+	for(int k=lo; k<=hi; k++)
+	{
+		if(i>mid) array[k]=aux[j++];
+		else if(j>hi) array[k]=aux[i++];
+		else if(aux[i]<aux[j]) array[k]=aux[i++];
+		else array[k]=aux[j++];
+	}
 }
