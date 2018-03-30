@@ -46,8 +46,6 @@ StrVec &StrVec::operator=(StrVec &&rhs) noexcept
 }
 
 
-
-
 int main()
 { 
 	vector<int> v1;
@@ -57,11 +55,5 @@ int main()
 	v2.push_back(4);
 
 	cout<<v1[1]<<endl;
-
-
-
-
-
-
 	return 0;
 }
