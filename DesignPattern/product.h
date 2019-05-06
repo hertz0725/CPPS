@@ -3,10 +3,10 @@
 
 class Product {
 public:
-	virtual ~Product() = 0;
+    virtual ~Product() = 0;
 
 protected:
-	Product();
+    Product();
 
 private:
 
@@ -15,15 +15,13 @@ private:
 
 class ConcreteProduct : public Product {
 public:
-	~ConcreteProduct();
-	ConcreteProduct();
+    ~ConcreteProduct();
+    ConcreteProduct();
 
 protected:
 
 private:
 
 };
-
-
 
 #endif //_PRODUCT_H_
