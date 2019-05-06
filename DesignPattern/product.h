@@ -12,7 +12,6 @@ private:
 
 };
 
-
 class ConcreteProduct : public Product {
 public:
     ~ConcreteProduct();
