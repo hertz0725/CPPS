@@ -14,9 +14,27 @@ protected:
 private:
 };
 
-class ConcreteStrategyA : public Strategy{
+class ConcreteStrategyA : public Strategy {
 public:
-    
+    ConcreteStrategyA();
+    virtual ~ConcreteStrategyA();
+    void AlgorithmInterface();
+
+protected:
+
+private:
+
+};
+
+class ConcreteStrategyB : public Strategy {
+public:
+    ConcreteStrategyB();
+    virtual ~ConcreteStrategyB();
+    void AlgorithmInterface();
+
+protected:
+
+private:
 
 };
 
