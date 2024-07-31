@@ -1,6 +1,46 @@
 #include <iostream>
 #include <vector>
 
+// merge sort
+void merge_sort(std::vector<int>& nums, int lo, int hi) {
+    if (lo >= hi) {
+        return;
+    }
+
+    int mid = lo + (hi-lo) / 2;
+
+    merge_sort(nums, lo, mid);
+    merge_sort(nums, mid+1, hi);
+    
+    merge(nums, lo, mid, hi);
+}
+
+void merge(std::vector<int>& nums, int lo, int mid, int hi) {
+    std::vector<int> nums_left(nums.begin()+lo, nums.begin()+mid+1);
+    std::vector<int> nums_right(nums.begin()+mid+1, nums.begin()+hi+1);
+
+    int i = lo;
+    int j = 0;
+    int k = 0;
+
+    while (j < nums_left.size() && k < nums_right.size()) {
+        if (nums_left[j] < nums_right[k]) {
+            nums[i++] = nums_left[j++];
+        } else {
+            nums[i++] = nums_right[k++];
+        }
+    }
+
+    while (j < nums_left.size()) {
+        nums[i++] = nums_left[j++];
+    }
+
+    while (k < nums_right.size()) {
+        nums[i++] = nums_right[k++];
+    }
+}
+
+// heap sort
 void sink(std::vector<int>& arry, int k, int n) {
     while (true) {
         int left = k*2 + 1;
@@ -43,6 +83,7 @@ void heap_sort(std::vector<int>& arry) {
     std::cout << std::endl;
 }
 
+// quick sort
 int partition(std::vector<int>& arry, int lo, int hi) {
     int i = lo;
     int j = hi + 1;
