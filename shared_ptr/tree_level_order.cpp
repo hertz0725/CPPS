@@ -9,6 +9,8 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+// zig zag
 class Solution {
 public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
@@ -47,6 +49,41 @@ public:
                 seq_order = !seq_order;
                 level_dq.clear();
 
+                last = tq.back();
+            }
+        }
+
+        return res_vec;
+    }
+};
+
+// right side view
+class Solution {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        if (!root) {
+            return {};
+        }
+
+        std::vector<int> res_vec;
+        
+        std::queue<TreeNode*> tq;
+        tq.push(root);
+        auto last = tq.back();
+
+        while (!tq.empty()) {
+            auto top = tq.front();
+            tq.pop();
+
+            if (top->left) {
+                tq.push(top->left);
+            }
+            if (top->right) {
+                tq.push(top->right);
+            }
+
+            if (top == last) {
+                res_vec.push_back(top->val);
                 last = tq.back();
             }
         }
