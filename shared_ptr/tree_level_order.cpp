@@ -45,7 +45,8 @@ public:
             }
 
             if (out == last) {
-                res_vec.push_back(std::vector<int>(level_dq.begin(), level_dq.end()));
+                res_vec.push_back(std::vector<int>(
+                    level_dq.begin(), level_dq.end()));
                 seq_order = !seq_order;
                 level_dq.clear();
 
@@ -89,5 +90,28 @@ public:
         }
 
         return res_vec;
+    }
+};
+
+//  common anc
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if (!root) {
+            return nullptr;
+        }
+
+        if (root == p || root == q) {
+            return root;
+        }
+
+        auto left = lowestCommonAncestor(root->left, p, q);
+        auto right = lowestCommonAncestor(root->right, p, q);
+
+        if (left && right) {
+            return root;
+        }
+
+        return left ? left : right;
     }
 };
